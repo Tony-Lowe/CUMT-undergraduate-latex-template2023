@@ -310,8 +310,12 @@
     \let\cumt@yanjiufangxiang\@empty
 \def\PingYueRen#1{\def\cumt@pingyueren{#1}}
     \let\cumt@pingyueren\@empty
-\setCJKfamilyfont{hwxk}{chinese.stxingka.ttf}             %使用STXingkai华文行楷字体
+\RequirePackage{fontspec}
+\usepackage{fontspec}
+\setCJKfamilyfont{hwxk}[AutoFakeBold]{stxingka.ttf}
+\setCJKfamilyfont{ls}[AutoFakeBold]{STLiti.ttf}          %使用STXingkai华文行楷字体
 \newcommand{\huawenxingkai}{\CJKfamily{hwxk}}
+\newcommand{\lishu}{\CJKfamily{ls}}
 \newcommand\cumt@coverboxed{
   \ifcumt@final\cleardoublepage\else\clearpage\fi
   \thisfancypage{}{%

@@ -1,0 +1,225 @@
+% !Mode:: "TeX:UTF-8"
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{xiao}
+\RequirePackage[framemethod=tikz]{mdframed}
+\RequirePackage{eso-pic}
+\RequirePackage{tikz}
+\usepackage{hologo}
+\newcommand{\XeLaTeX}{\hologo{XeLaTeX}}
+
+\makeatletter
+\global\let\tikz@ensure@dollar@catcode=\relax
+\makeatother
+
+%\pagecolor{GhostWhite}
+\definecolor{darkgrey}{cmyk}{0,0,0,0.63}%{0,0,0,63}
+\definecolor{lightgrey}{cmyk}{0,0,0,0.32}%{0,0,0,32}
+
+\RequirePackage{fancyhdr}
+\RequirePackage{hyperref}
+\hypersetup{%
+  pdftitle={China University of Mining and Technology Thesis Template},%
+  pdfsubject={China University of Mining and Technology},%
+  pdfauthor={Xiao Lishun},%
+  pdfkeywords={LaTeX, Template},%
+  pdfstartview=FitH,%
+  %CJKbookmarks=true,%
+  bookmarksnumbered=true,%
+  bookmarksopen=false,%
+  colorlinks=true, linkcolor=Sepia, urlcolor=Sepia, citecolor=Sepia, %
+}
+
+\def\abstractname{摘要}
+\def\contentsname{目录}
+\def\refname{参考文献}
+\def\tablename{表}
+\setcounter{tocdepth}{2}
+
+\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fangsong #1}}\marginpar{\strut}\hskip\parindent}
+\def\DescribeMacro{\Describe@Macro}
+\def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
+\def\PrintDescribeMacro#1{\noindent{\color{Sepia}\MacroFont \string #1}\hskip\parindent}
+
+\def\DescribeEnv{\Describe@Env}
+\def\Describe@Env#1{\PrintDescribeEnv{#1}\SpecialUsageIndex{#1}}
+\def\PrintDescribeEnv#1{\noindent{\color{Sepia}\MacroFont \string #1}\hskip\parindent}
+
+\newbox\absbox
+\renewenvironment{abstract}{\global\setbox\absbox=\vbox\bgroup
+  \hsize=0.8\textwidth\def\baselinestretch{1.4}%
+  \large
+  \noindent\unskip\textbf{\abstractname:}\space\space
+  {\vskip6pt\color{Peach}\hrule height5\p@ depth\z@ width.8\textwidth\vskip6pt}
+  \sbox\@tempboxa{\textbf{\abstractname:}\space\space}
+  \@tempdima=\wd\@tempboxa
+  \hangindent\@tempdima
+  \hangafter=0
+  \noindent
+  \unskip\ignorespaces\fangsong}
+  {\egroup}
+
+\renewcommand\maketitle{%
+\begin{titlepage}
+\AddToShipoutPicture*{%
+\setlength\unitlength{1mm}
+\begin{tikzpicture}[remember picture,overlay]
+  \draw[fill=Peach!10,Peach!10] (current page.south west) rectangle (current page.north east);
+  \draw[fill=Peach!80,Peach!80] (3cm,0.8\paperheight) rectangle (\paperwidth,0.9\paperheight);
+%  \shade[shading=axis,top color=Peach!80,bottom color=Peach!10]
+%        (3cm,0.8\paperheight) rectangle (\paperwidth,0.79\paperheight);
+  \shade[fill=Peach!80,Peach!80]
+        (current page.south west) rectangle
+        (3cm,\paperheight);
+  \node[rotate=90] at (1.5cm,.5\paperheight)
+        {\color{white}\Huge\sf cumtthesis.cls: A Better Way to Format Your CUMT Thesis};
+  \node[anchor=west,white] (title) at (4cm,0.85\paperheight)
+        {\huge\sffamily cumtthesis.cls: \@title};
+\end{tikzpicture}
+\put(80,30){%
+\begin{pgfpicture}
+\pgfmathdeclarerandomlist{color}{{Peach}{orange}}
+\foreach \a in {1,...,6}{
+\pgfmathrandominteger{\x}{1}{200}
+\pgfmathrandominteger{\y}{10}{200}
+\pgfmathrandominteger{\r}{20}{60}
+\pgfmathrandominteger{\o}{50}{80}
+\pgfmathrandomitem{\c}{color}
+\pgfsetfillopacity{\o/100}
+\pgfpathcircle{\pgfpoint{+\x pt}{+\y pt}}{+\r pt}
+\color{\c!40!white}
+\pgfsetstrokecolor{\c!80!black}
+\pgfusepath{stroke,fill}}%
+\end{pgfpicture}}
+%\begin{pgfpicture}
+%  \pgfmathdeclarerandomlist{color}{{Peach}{Orange}{Red}{Brown}}
+%  \foreach \a in {1,...,5}{%
+%    \pgfmathrandominteger{\x}{1}{200}
+%    \pgfmathrandominteger{\y}{1}{200}
+%    \pgfmathrandominteger{\r}{20}{60}
+%    \pgfmathrandominteger{\s}{5}{95}
+%    \pgfmathrandominteger{\o}{50}{80}
+%    \pgfmathrandomitem{\c}{color}
+%    \pgfdeclareradialshading{ballshading}{\pgfpoint{-10bp}{10bp}}
+%    {color(0bp)=(\c!15!white); color(9bp)=(\c!75!white);
+%     color(18bp)=(\c!70!black); color(25bp)=(\c!50!black); color(50bp)=(black)}
+%    \pgfsetfillopacity{\o/100}
+%    \pgfpathcircle{\pgfpoint{+\x pt}{+\y pt}}{+\r pt}
+%    \pgfshadepath{ballshading}{\s}
+%    \pgfusepath{}
+%  }%
+%\end{pgfpicture}}
+}
+
+\begin{flushright}
+  \null
+  \vskip100pt
+  {\Large\sf China University of Mining and Technology \LaTeX{} Thesis Template\par}
+  \bigskip
+  {\large\lineskip .75em\normalsize\ttfamily\@author\par}%
+  \bigskip%
+  {\small \@date \par}%
+  \vskip30pt
+  \hfill\box\absbox\par
+  \vskip12pt
+\end{flushright}\par
+\vfil\null
+\end{titlepage}
+}
+
+  \tolerance=10000
+  \vbadness=10000
+  \hbadness=10000
+  \hfuzz=60pt
+
+\def\ps@xiaoheadings{
+  \hfuzz=5pt
+  \vfuzz=5pt
+  \def\@oddhead{\vbox to\headheight{%
+    \begin{tikzpicture}[remember picture,overlay]%
+      \draw[top color=Peach!80!white,bottom color=Peach!80!white,draw=none]
+            (current page.north west) rectangle (\paperwidth,-.5cm);%
+%      \draw[top color=Peach!70!black,bottom color=GhostWhite,draw=none]
+%            (\paperwidth,-.5cm) rectangle (-1.3in,-.7cm);
+      \node[anchor=west,rectangle,line width=0mm,draw=none,color=white] at
+            (-2cm,.5\headheight) {\large\bfseries\rightmark};%
+      \node[anchor=east,rectangle,line width=0mm,draw=none,color=white] at
+            (.8\paperwidth,.5\headheight) {\large\bfseries cumtthesis.cls};%
+    \end{tikzpicture}
+    }
+  }
+  \let\@evenhead=\@oddhead
+  \def\@oddfoot{
+    \begin{tikzpicture}[remember picture,overlay]%
+      \draw[top color=Peach!80,bottom color=Peach!80,draw=none]
+            (current page.south west) rectangle (\paperwidth,.2cm);%
+      \node[anchor=east,rectangle,%ball color=orange!50,%fill=lightgrey,%circle,%fill=lightgrey,text height=5mm,text depth=8mm,text width=5ex
+            text=white,text width=4ex,text centered]
+            at ([xshift=-.47\paperwidth,yshift=1\footskip]current page.south east) {\Large\thepage};
+    \end{tikzpicture}
+  }
+  \let\@evenfoot=\@oddfoot
+  \let\@mkboth\markboth
+  \def\sectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+        \thesection\quad
+      \fi
+      ##1}}
+  \def\subsectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+        \thesubsection\quad
+      \fi
+      ##1}}
+}
+
+\renewcommand\tableofcontents{%
+  \null\vskip20pt
+  \section*{\contentsname}
+  %{\noindent\Large\bfseries\contentsname}
+  %{\vskip6pt\color{Peach}\hrule height3pt depth0 width\textwidth\vskip6pt}
+  \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+  \vskip5ex%
+  \@starttoc{toc}%
+  }
+
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep\normalfont\color{Sepia}\bfseries #1}
+\renewenvironment{description}
+  {\list{}{\labelwidth0\itemindent-\leftmargin
+   \let\makelabel\descriptionlabel}}
+  {\endlist}
+
+\DefineVerbatimEnvironment{example}{Verbatim}%
+ {frame=single, framerule=0mm,framesep=0mm, %baselinestretch=1,
+  formatcom=\color{Sepia},fontsize=\small, gobble=1}
+
+\newmdenv[roundcorner=5pt,
+          middlelinewidth=0.4pt,
+          middlelinecolor=orange,
+          outerlinewidth=0pt,
+          innerlinewidth=0pt,
+          shadow=false,
+          frametitlerule=true,
+          frametitlerulewidth=0pt,
+          frametitlefont={\small\itshape},
+          innertopmargin=5pt,
+          innerbottommargin=-2pt,
+          backgroundcolor=cyan!3,
+          frametitlebackgroundcolor=Peach!10!white,
+          skipabove=.5em,
+          skipbelow=.4em]{framed}
+
+\mdfsetup{%
+    backgroundcolor=cyan!3,
+    roundcorner=5pt,
+    middlelinewidth=0.4pt,
+    middlelinecolor=orange,
+    shadow=false,
+    skipabove=.5em,
+    skipbelow=.4em,innertopmargin=5pt,innerbottommargin=-2pt}
+
+\renewcommand\section{\@startsection{section}{1}{0}%
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  {2.3ex \@plus.2ex
+   \begingroup
+     \vskip6pt\color{Peach}\hrule height2pt depth0 width\textwidth\vskip6pt
+   \endgroup}%
+  {\normalfont\Large\bfseries}}
