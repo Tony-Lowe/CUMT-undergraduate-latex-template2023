@@ -1,7 +1,7 @@
 # 说明
 本项目为非官方矿大本科毕业论文latex版本。改编于[2022年的类似项目](https://github.com/Lighter207/CUMT-undergraduate-latex-template2022)。感谢矿大各位学长学姐的贡献，让这个项目逐步完善了起来。有问题请在issues中提出。
 
-2022版本比起2021版本，修复了一些错误，使其适配于windows10下vscode编辑器的使用。
+2023版本比起2022版本，使其可以在Overleaf上直接部署。
 
 # 效果
 见示例PDF——thesis.pdf
@@ -11,9 +11,13 @@
 ## Overleaf（推荐）
 
 前往[Overleaf](https://www.overleaf.com/)，单击左上角的New Project，选择Upload Project。
-![project](/introduction/screenshot1.png)
+
+![project](https://github.com/Tony-Lowe/CUMT-undergraduate-latex-template2023/blob/master/Introduction/screenshot1.png)
+
 将本项目的zip压缩包上传后。单击新界面的左上角Menu，在菜单中的compiler选择XeLatex，之后单击页面中间绿色的Recompile即可。
-![compiler](/introduction/screenshot2.png)![compile](/introduction/screenshot3.png)
+
+![compiler](https://github.com/Tony-Lowe/CUMT-undergraduate-latex-template2023/blob/master/Introduction/screenshot2.png)![compile](https://github.com/Tony-Lowe/CUMT-undergraduate-latex-template2023/blob/master/Introduction/screenshot3.png)
+
 在对应位置修改完直接Recompile即可生成毕业论文的pdf。浏览器建议使用基于Chromium的浏览器（如Microsoft Edge、Chrome等）
 ## Vscode
 **请注意，本项目基于windows10系统，使用vscode编辑器，TeX Live 版本为2021版。**
