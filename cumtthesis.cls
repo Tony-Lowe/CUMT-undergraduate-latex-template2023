@@ -313,9 +313,10 @@
 \RequirePackage{fontspec}
 \usepackage{fontspec}
 \setCJKfamilyfont{hwxk}[AutoFakeBold]{stxingka.ttf}
-\setCJKfamilyfont{ls}[AutoFakeBold]{STLiti.ttf}          %使用STXingkai华文行楷字体
-\newcommand{\huawenxingkai}{\CJKfamily{hwxk}}
+\setCJKfamilyfont{ls}[AutoFakeBold]{STLiti.ttf}
+\newcommand{\huawenxingkai}{\CJKfamily{hwxk}}%使用STXingkai华文行楷字体
 \newcommand{\lishu}{\CJKfamily{ls}}
+% \newcommand{\huawenxingkai}{\CJKfamily{hwxk}}
 \newcommand\cumt@coverboxed{
 	\ifcumt@final\cleardoublepage\else\clearpage\fi
 	\thisfancypage{}{%
