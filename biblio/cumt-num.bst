@@ -923,7 +923,7 @@ FUNCTION {inproceedings}
   format.authors "author" output.check
   author format.key output
   new.block
-  format.title "title" output.check
+  format.title "~[C]" * "title" output.check
   new.block
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
