@@ -19,6 +19,7 @@
 ![compiler](https://github.com/Tony-Lowe/CUMT-undergraduate-latex-template2023/blob/master/Introduction/screenshot2.png)![compile](https://github.com/Tony-Lowe/CUMT-undergraduate-latex-template2023/blob/master/Introduction/screenshot3.png)
 
 在对应位置修改完直接Recompile即可生成毕业论文的pdf。浏览器建议使用基于Chromium的浏览器（如Microsoft Edge、Chrome等）
+
 ---
 
 **注意**：默认使用的cumt.bst文件会将参考文献按照作者名进行排序。如果需要按照出现顺序进行排序，可以将thesis.tex文件中
@@ -30,7 +31,9 @@
 \bibliographystyle{biblio/cumt-num}
 ```
  之后再编译即可。
+ 
 ---
+
 ## Vscode
 **请注意，本项目基于windows10系统，使用vscode编辑器，TeX Live 版本为2021版。**
 1. Vscode 配置TeX环境
