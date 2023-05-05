@@ -427,9 +427,8 @@
   \phantomsection
   \addcontentsline{toe}{chapter}{Abstract}
   \parindent\z@
-  % arial加粗总是失败，先使用times new roman
-  % \parbox[t]{\textwidth}{\bfseries\sffamily\upshape\zihao{-2}\centering Abstract}\par\vskip1.7em
-  \parbox[t]{\textwidth}{\bfseries\zihao{-2}\centering Abstract}\par\vskip1.7em  
+  \parbox[t]{\textwidth}{\setmainfont{Arial-Bold.ttf}\zihao{-2}\centering Abstract}\par\vskip1.7em
+  % \parbox[t]{\textwidth}{\bfseries\zihao{-2}\centering Abstract}\par\vskip1.7em  
   \@mkboth{Abstract}{Abstract}
   \zihao{-4}\parindent2em
   \def\EKeyWords##1{\par\bigskip\parindent\z@
