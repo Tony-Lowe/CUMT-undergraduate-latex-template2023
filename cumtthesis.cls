@@ -226,7 +226,7 @@
   \end{figure}
   \begin{center}
     \vskip2\p@\bgroup\zihao{-2}\songti\cumt@xuewei\cumt@xueweilunwen@name\egroup\par\vskip2.5cm
-    \parbox[t]{\cumt@clunwentimu@width\textwidth}{\zihao{2}\bf\boldmath\centering\cumt@clunwentimu}\par
+    \parbox[t]{\cumt@clunwentimu@width\textwidth}{\zihao{2}\heiti\centering\cumt@clunwentimu}\par
     \bigskip\bigskip
     \parbox[t]{\cumt@elunwentimu@width\textwidth}{\zihao{2}\centering\cumt@elunwentimu}\par
   \end{center}
@@ -348,7 +348,7 @@
   \begingroup\zihao{1}\lishu\cumt@xuewei\cumt@xueweilunwen@name\endgroup\par\vskip1.5cm
 %  \begingroup\zihao{1}\cumt@xuewei\cumt@xueweilunwen@name\endgroup\par\vskip1.5cm  
   \begingroup
-    \parbox[t]{\cumt@clunwentimu@width\textwidth}{\zihao{2}\bf\boldmath\centering\cumt@clunwentimu}\par
+    \parbox[t]{\cumt@clunwentimu@width\textwidth}{\zihao{2}\heiti\centering\cumt@clunwentimu}\par
     \bigskip\bigskip
     \parbox[t]{\cumt@elunwentimu@width\textwidth}{\zihao{2}\centering\cumt@elunwentimu}\par
   \endgroup
@@ -427,9 +427,8 @@
   \phantomsection
   \addcontentsline{toe}{chapter}{Abstract}
   \parindent\z@
-  % arial加粗总是失败，先使用times new roman
-  % \parbox[t]{\textwidth}{\bfseries\sffamily\upshape\zihao{-2}\centering Abstract}\par\vskip1.7em
-  \parbox[t]{\textwidth}{\bfseries\zihao{-2}\centering Abstract}\par\vskip1.7em  
+  \parbox[t]{\textwidth}{\setmainfont{Arial-Bold.ttf}\zihao{-2}\centering Abstract}\par\vskip1.7em
+  % \parbox[t]{\textwidth}{\bfseries\zihao{-2}\centering Abstract}\par\vskip1.7em  
   \@mkboth{Abstract}{Abstract}
   \zihao{-4}\parindent2em
   \def\EKeyWords##1{\par\bigskip\parindent\z@
