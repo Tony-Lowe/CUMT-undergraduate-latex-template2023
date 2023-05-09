@@ -881,9 +881,11 @@
   \setlength\labelsep{1ex}}{}
 \newcommand{\cumt@declaration}{
   \ifcumt@final\cleardoublepage\else\clearpage\fi
-  \chapter*{\cumt@declaration@title}\vskip-6\p@%
-  \phantomsection
-  \addcontentsline{toe}{chapter}{Declaration of \cumt@thesis{} Originality}
+  \make@title@cover{\cumt@declaration@title}\vskip-3\p@
+  %为了目录中不出现原创性声明，注释了以下三行代码
+  %\chapter*{\cumt@declaration@title}\vskip-6\p@%
+  %\phantomsection
+  %\addcontentsline{toe}{chapter}{Declaration of \cumt@thesis{} Originality}
   {\zihao{-4}\kaishu\parindent2em\cumt@declaration@neirong}
   \par\vskip40\p@
   \hb@xt@\textwidth{\songti\hfill\cumt@xueweilunwenzuozheqianming@name\hskip4em}
