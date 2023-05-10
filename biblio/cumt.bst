@@ -1,3 +1,36 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@Tony-Lowe 
+Tony-Lowe
+/
+CUMT-undergraduate-latex-template2023
+Public
+Cannot fork because you own this repository and are not a member of any organizations.
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Beta Try the new code view
+CUMT-undergraduate-latex-template2023/biblio/cumt.bst
+@Lighter207
+Lighter207 本科生毕设论文模板2022版
+Latest commit 92d5244 on Apr 3, 2022
+ History
+ 1 contributor
+1594 lines (1431 sloc)  29.4 KB
+ 
+
 % !Mode:: "TeX:UTF-8"
 
 %% File: `abbrvnat.bst'
@@ -929,20 +962,18 @@ FUNCTION {inproceedings}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
-      %format.pages output
+      format.pages output
       address empty$
         { organization publisher new.sentence.checkb
           organization output
           publisher output
           format.date "year" output.check
-          format.pages output
         }
         { address output.nonnull
           format.date "year" output.check
           new.sentence
           organization output
           publisher output
-          format.pages output
         }
       if$
     }
@@ -998,9 +1029,6 @@ FUNCTION {misc}
 { output.bibitem
   format.authors output
   author format.key output
-  new.block
-  format.title "~[M]" * "title" output.check
-  new.block
   title howpublished new.block.checkb
   format.title output
   howpublished new.block.checka
@@ -1462,37 +1490,39 @@ FUNCTION {editor.organization.sort}
   if$
 }
 
-% 定义一个新的函数，用于生成排序关键字
-FUNCTION {msort.key.label}
-{
-  key empty$
-    { label }
-    { key }
-  if$
-}
 
-% 定义一个新的函数，用于生成排序标签
-FUNCTION {msort.label}
-{
-  "{"
-  msort.key.label
-  "}"
-  * 
-}
-
-% 修改 presort 函数，将文献排序关键字和排序标签设置为按引用顺序
 FUNCTION {presort}
 { calc.label
   label sortify
   "    "
   *
+  type$ "book" =
+  type$ "inbook" =
+  or
+    'author.editor.sort
+    { type$ "proceedings" =
+        'editor.organization.sort
+        { type$ "manual" =
+            'author.organization.sort
+            'author.sort
+          if$
+        }
+      if$
+    }
+  if$
+  "    "
+  *
+  year field.or.null sortify
+  *
+  "    "
+  *
   cite$
   *
   #1 entry.max$ substring$
-  'msort.label :=
-  msort.label *
+  'sort.label :=
+  sort.label *
   #1 entry.max$ substring$
-  'msort.key$ :=
+  'sort.key$ :=
 }
 
 ITERATE {presort}
@@ -1595,4 +1625,3 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
-
