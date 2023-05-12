@@ -89,6 +89,6 @@ Vscode中的拓展[LaTex Workshop官方文档](https://github.com/James-Yu/LaTeX
 [zotero中文文献引用抓取插件](https://github.com/l0o0/translators_CN)
 
 # 本项目还存在的问题
-1. 英文摘要标题的Arial字体无法加粗，所以使用了New Times Roman字体加粗，看起来也算是差不多吧，不细看的话。
-2. 参考文献格式，原本的要求就有点乱（说实话还不如直接用国标），这个项目中的bst文档也不是我写的，总之就是凑合着用。如果有问题，欢迎开issue一起交流讨论。
+1. 参考文献格式，原本的要求就有点乱（说实话还不如直接用国标），这个项目中的bst文档也不是我写的，总之就是凑合着用。
+2. 对于图片，无法使用子图排列，如果引入subfig或者subcaption，图片英文脚注的编号会消失。
 
