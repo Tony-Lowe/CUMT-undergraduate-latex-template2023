@@ -133,6 +133,16 @@
     \let\@evenhead\@empty%
     \def\@oddfoot{\hfil\zihao{5}\thepage\hfil}%
     \let\@evenfoot=\@oddfoot}
+\def\ps@cumt@bib{%
+    \def\@oddhead{\vbox to\headheight{%
+        \hb@xt@\textwidth{\hfill\zihao{5}\songti\bibname\hfill}%
+        \vskip5\p@\hbox{\vrule width\textwidth height.4\p@ depth\z@}}}
+    \def\@evenhead{\vbox to\headheight{%
+        \hb@xt@\textwidth{\zihao{5}\songti%
+        \hfill\bibname\hfill}%
+        \vskip5\p@\hbox{\vrule width\textwidth height.4\p@ depth\z@}}}
+    \def\@oddfoot{\hfil\zihao{5}\thepage\hfil}%
+    \let\@evenfoot=\@oddfoot}
 \def\ps@cumt@headings{%
     \def\@oddhead{\vbox to\headheight{%
         \hb@xt@\textwidth{\hfill\zihao{5}\songti\leftmark\hfill}%
@@ -167,7 +177,7 @@
 \renewcommand\backmatter{%
   \clearpage
   \@mainmatterfalse
-  \pagestyle{cumt@plain}
+  \pagestyle{cumt@bib}
   \setlength{\baselineskip}{21\p@}
   \def\baselinestretch{1.4}
   \sloppy}
