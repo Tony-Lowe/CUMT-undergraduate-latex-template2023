@@ -22,7 +22,23 @@
 
 ---
 
-**注意**：默认使用的cumt.bst文件会将参考文献按照作者名进行排序。如果需要按照出现顺序进行排序，可以将thesis.tex文件中
+**注意**：
+
+对于**中文**参考文献，请在对应的bib条目中增加`language={chinese}`项，例如：
+```bib
+@article{陆济湘2004从点云到表面的建模问题综述,
+  title={从点云到表面的建模问题综述},
+  author={陆济湘 and 李德华},
+  journal={武汉理工大学学报},
+  volume={26},
+  number={5},
+  pages={3},
+  year={2004},
+  language={chinese}
+}
+```
+
+默认使用的cumt.bst文件会将参考文献按照作者名进行排序。如果需要按照出现顺序进行排序，可以将thesis.tex文件中
 ```Tex
 \bibliographystyle{biblio/cumt}
 ```
