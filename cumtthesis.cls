@@ -133,6 +133,7 @@
     \let\@evenhead\@empty%
     \def\@oddfoot{\hfil\zihao{5}\thepage\hfil}%
     \let\@evenfoot=\@oddfoot}
+
 \def\ps@cumt@bib{%
     \def\@oddhead{\vbox to\headheight{%
         \hb@xt@\textwidth{\hfill\zihao{5}\songti\bibname\hfill}%
@@ -143,6 +144,18 @@
         \vskip5\p@\hbox{\vrule width\textwidth height.4\p@ depth\z@}}}
     \def\@oddfoot{\hfil\zihao{5}\thepage\hfil}%
     \let\@evenfoot=\@oddfoot}
+
+\def\ps@cumt@trans{%
+    \def\@oddhead{\vbox to\headheight{%
+        \hb@xt@\textwidth{\hfill\zihao{5}\songti\rightmark\hfill}%
+        \vskip5\p@\hbox{\vrule width\textwidth height.4\p@ depth\z@}}}
+    \def\@evenhead{\vbox to\headheight{%
+        \hb@xt@\textwidth{\zihao{5}\songti%
+        \hfill\rightmark\hfill}%
+        \vskip5\p@\hbox{\vrule width\textwidth height.4\p@ depth\z@}}}
+    \def\@oddfoot{\hfil\zihao{5}\thepage\hfil}%
+    \let\@evenfoot=\@oddfoot}
+    
 \def\ps@cumt@headings{%
     \def\@oddhead{\vbox to\headheight{%
         \hb@xt@\textwidth{\hfill\zihao{5}\songti\leftmark\hfill}%
@@ -181,6 +194,8 @@
   \setlength{\baselineskip}{21\p@}
   \def\baselinestretch{1.4}
   \sloppy}
+
+
 \let\cumt@cleardoublepage\cleardoublepage
 \newcommand{\cumt@clearemptydoublepage}{%
   \clearpage{\pagestyle{cumt@empty}\cumt@cleardoublepage}}
@@ -277,9 +292,10 @@
     \pagestyle{cumt@empty}
     \cumt@first@titlepage
     \cumt@coverboxed
-%    \cumt@authorization
-%    \cumt@authenticate
-	 \cumt@declaration
+    \cumt@declaration
+    %\cumt@integrity
+    %\cumt@authorization
+    %\cumt@authenticate
   \end{titlepage}
 
   \ifcumt@final\cleardoublepage\else\clearpage\fi
@@ -291,7 +307,8 @@
   \ifcumt@final\cleardoublepage\else\clearpage\fi
   \pdfbookmark[0]{#1}{\cstostr{#1}}
   \parindent\z@\parbox[t]{\textwidth}{\bfseries\heiti\zihao{-2}\centering #1}
-  \par\vskip1.5em\parindent2em}
+  \par\vskip1.5em
+  \parindent2em}
 \newcommand{\cumt@authorization}{
   \make@title@cover{\cumt@authorization@title}
   \zihao{-4}\kaishu\cumt@authorization@neirong
@@ -323,9 +340,11 @@
 \RequirePackage{fontspec}
 \usepackage{fontspec}
 \setCJKfamilyfont{hwxk}[AutoFakeBold]{stxingka.ttf}
-\setCJKfamilyfont{ls}[AutoFakeBold]{STLiti.ttf}          %使用STXingkai华文行楷字体
-\newcommand{\huawenxingkai}{\CJKfamily{hwxk}}
+\setCJKfamilyfont{ls}[AutoFakeBold]{STLiti.ttf}
+
+\newcommand{\huawenxingkai}{\CJKfamily{hwxk}}%使用STXingkai华文行楷字体
 \newcommand{\lishu}{\CJKfamily{ls}}
+% \newcommand{\huawenxingkai}{\CJKfamily{hwxk}}
 \newcommand\cumt@coverboxed{
   \ifcumt@final\cleardoublepage\else\clearpage\fi
   \thisfancypage{}{%
@@ -437,8 +456,9 @@
   \phantomsection
   \addcontentsline{toe}{chapter}{Abstract}
   \parindent\z@
+  % arial加粗总是失败，先使用times new roman
   \parbox[t]{\textwidth}{\setmainfont{Arial-Bold.ttf}\zihao{-2}\centering Abstract}\par\vskip1.7em
-  % \parbox[t]{\textwidth}{\bfseries\zihao{-2}\centering Abstract}\par\vskip1.7em  
+  %\parbox[t]{\textwidth}{\bfseries\zihao{-2}\centering Abstract}\par\vskip1.7em  
   \@mkboth{Abstract}{Abstract}
   \zihao{-4}\parindent2em
   \def\EKeyWords##1{\par\bigskip\parindent\z@
@@ -880,7 +900,7 @@
   \par\vskip.3ex\centerline{\songti\zihao{-4}#1}
   \par\nobreak\vskip .5em \@plus .2ex \@minus .5em
 }
-\newenvironment{resume}{%
+\newenvironment{resume}{
   \ifcumt@final\cleardoublepage\else\clearpage\fi
   \chapter*{\cumt@resume@title}\vskip-6\p@
   \phantomsection
@@ -891,11 +911,31 @@
 \newcommand{\cumt@declaration}{
   \ifcumt@final\cleardoublepage\else\clearpage\fi
   \make@title@cover{\cumt@declaration@title}\vskip-3\p@
-  %为了目录中不出现原创性声明，注释了以下三行代码
   %\chapter*{\cumt@declaration@title}\vskip-6\p@%
   %\phantomsection
   %\addcontentsline{toe}{chapter}{Declaration of \cumt@thesis{} Originality}
   {\zihao{-4}\kaishu\parindent2em\cumt@declaration@neirong}
+  \par\vskip40\p@
+  \hb@xt@\textwidth{\songti\hfill\cumt@xueweilunwenzuozheqianming@name\hskip4em}
+  \hb@xt@\textwidth{\songti\hfill\cumt@qianmingriqi}
+}
+
+\newenvironment{translation}{%
+  \ifcumt@final\cleardoublepage\else\clearpage\fi
+  \chapter*{\cumt@translation@title}\vskip-6\p@
+  \phantomsection
+  \addcontentsline{toe}{chapter}{Translation}
+  \@mkboth{\cumt@translation@title}{\cumt@translation@title}
+  \zihao{5}\setlength\leftmargini{3.2em}
+  \setlength\labelsep{1ex}}{}
+  
+\newcommand{\cumt@integrity}{
+  \ifcumt@final\cleardoublepage\else\clearpage\fi
+  \make@title@cover{\cumt@integrity@title}\vskip-3\p@
+  %\chapter*{\cumt@declaration@title}\vskip-6\p@%
+  %\phantomsection
+  %\addcontentsline{toe}{chapter}{Declaration of \cumt@thesis{} Originality}
+  {\zihao{-4}\kaishu\parindent2em\cumt@integrity@content}
   \par\vskip40\p@
   \hb@xt@\textwidth{\songti\hfill\cumt@xueweilunwenzuozheqianming@name\hskip4em}
   \hb@xt@\textwidth{\songti\hfill\cumt@qianmingriqi}

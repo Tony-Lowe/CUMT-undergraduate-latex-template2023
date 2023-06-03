@@ -1,0 +1,68 @@
+\pagestyle{cumt@trans}
+
+\begin{translation}
+
+\section*{英文原文}
+
+\par\vskip1.5em
+\parindent2em
+
+\parindent=0em \parbox[t]{\textwidth}{\bfseries\heiti\zihao{-2}\centering Learning Progressive Point Embeddings for 3D Point Cloud Generation}
+
+  \par\vskip1.5em
+  \parindent2em
+
+
+\parindent=0em \parbox[t]{\textwidth}{\heiti\zihao{5}\centering Cheng Wen, Baosheng Yu, Dacheng Tao}
+
+  \par\vskip1.5em
+  \parindent2em
+  
+\section*{Abstract}
+
+Generative models for 3D point clouds are extremely important for scene/object reconstruction applications in autonomous driving and robotics. Despite recent success of deep learning-based representation learning, it remains a great challenge for deep neural networks to synthesize or reconstruct high-fidelity point clouds, because of the difficulties in 1) learning effective pointwise representations; and 2) generating realistic point clouds from complex distributions. In this paper, we devise a dual-generators framework for point cloud generation, which generalizes vanilla generative adversarial learning framework in a progressive manner. Specifically, the first generator aims to learn effective point embeddings in a breadth-first manner, while the second generator is used to refine the generated point cloud based on a depth-first point embedding to generate a robust and uniform point cloud. The proposed dual-generators framework thus is able to progressively learn effective point embeddings for accurate point cloud generation. Experimental results on a variety of object categories from the most popular point cloud generation dataset, ShapeNet, demonstrate the state-of-the-art performance of the proposed method for accurate point cloud generation.
+
+\subsection*{3.1 Discriminator}
+
+In adversarial learning, the discriminator distinguishes whether the input (e.g., a point cloud) is produced by the generator or sampled from the ground truth, while the generator requires to fool the discriminator by generating a high-fidelity point cloud. Recently, [1] has investigated GAN-based architectures for point cloud generation: the discriminator first embeds the input points into high dimension in a pointwise manner, and then aggregates the feature vectors of previous step to obtain the global features, e.g., using the symmetric operation [29]. However, the above architecture usually fails to capture the local information implied in geometry structures. To overcome this, we simultaneously extract global and local point features to learn effective point representations.
+
+As shown in Fig.2, to extract effective feature representations from point clouds, we utilize multiple MLP blocks with residual connections to learn both low- and high-level features in a pointwise manner. The input of each pointwise MLP block is a set of point features with the size$ N \times C_{in}$ and the output size $N \times C_{out}$, where $C_{in}$ and$C_{out}$ denote the numbers of channels in the input and output feature attributes, respectively. After each MLP block, we also attach a point convolution layer or the set abstraction (SA) layer [30] to extract local features by aggregating the information of neighbor points. Specifically, each point convolution layer consists of a sampling operation and a grouping operation, as shown in Fig. 3. The input size of this layer is $N \times C_{in}^′$ and the output size is $N_s \times C_{out}^′$, where $N_s$ indicates the number of sampled points.
+
+\begin{equation}
+    L_{dis}=L_s(p,\hat{p})+L_p(\mathbb{E}[p_i],\mathbb{E}[\hat{p_i}])\tag{1}
+\end{equation}
+
+\newpage
+
+\section*{中文译文}
+
+\par\vskip1.5em
+\parindent2em
+
+\parindent=0em \parbox[t]{\textwidth}{\bfseries\heiti\zihao{-2}\centering 面向三维点云生成的渐进式点嵌入学习}
+
+  \par\vskip1.5em
+  \parindent2em
+
+
+\parindent=0em \parbox[t]{\textwidth}{\heiti\zihao{5}\centering Cheng Wen, Baosheng Yu, Dacheng Tao}
+
+  \par\vskip1.5em
+  \parindent2em
+
+\section*{摘要}
+
+三维点云的生成模型对于自动驾驶和机器人领域的场
+景/物体重建应用极其重要。尽管最近基于深度学习的表
+示 学 习 取 得 了 成 功 ， 但 对 于 深 度 神 经 网 络 来 说 ， 合 成 或
+重建高保真的点云仍然是一个巨大的挑战，因为 1)学 习
+有 效的 点 态 表 示 ;以 及 2)从 复 杂 的 分 布中 生 成 逼 真 的点 云 。
+本 文 设 计 了 一 个 用 于 点 云 生 成 的 双 生 成 器 框 架 ， 以 渐 进
+式 的方 式 泛 化 了 vanilla 生 成 对 抗 学 习 框架 。 具 体 来说 ，
+第一个生成器旨在以广度优先的方式学习有效的点嵌入，
+而 第 二 个 生 成 器 用 于 基 于 深 度 优 先 的 点 嵌 入 来 细 化 生 成
+的 点 云 ， 以 生 成 鲁 棒 和 均 匀 的 点 云 。 因 此 ， 所 提 出 的 双
+生 成 器 框 架 能 够 逐 步 学 习 有 效 的 点 嵌 入 ， 以 准 确 地 生 成
+点 云。 在 最 流行 的 点 云 生成 数 据 集 ShapeNet 的 各 种对 象
+类 别 上 的 实 验 结 果 表 明 ， 所 提 出 的 方 法 在 精 确 点 云 生 成
+方面具有最先进 的性 能 。
