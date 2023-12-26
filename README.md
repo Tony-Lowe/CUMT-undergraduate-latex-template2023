@@ -3,6 +3,8 @@
 
 2023版本比起2022版本，使其可以在Overleaf上直接部署。
 
+现在可以直接在overleaf上找到模板![链接](https://www.overleaf.com/latex/templates/zhong-guo-kuang-ye-da-xue-ben-ke-sheng-bi-ye-she-ji-mo-ban-2023ban-fei-guan-fang-cumt-undergraduate-latex-template2023-unofficial/wnvtqxmbyjdj)
+
 # 效果
 见示例PDF——thesis.pdf
 
